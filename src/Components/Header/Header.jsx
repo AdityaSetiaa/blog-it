@@ -1,7 +1,9 @@
 import React from 'react'
-import {Container, Logo, Logoutbtn} from '../index.js'
+import Logo from '../index.js'
+import Logoutbtn from '../index.js'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import Container from '../Container/Container.jsx'
 import { useNavigate } from 'react-router-dom'
 
 function Header() {

@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import authService from './appwrite/auth'
 import { login, logout } from './Store/authSlice.js'
-import { Footer, Header } from './Components/index.js'
+import Footer from './Components/Footer/Footer.jsx'
+import Header from './Components/Header/Header.jsx'
 
 
 function App() {

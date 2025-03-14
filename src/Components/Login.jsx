@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { login as authLogin } from '../store/authSlice'
-import {Button, Input, Logo} from './index'
+import { login as authLogin } from '../Store/authSlice'
+import Logo from './logo.jsx'
+import Button from './button.jsx'
+import Input from './input.jsx'
 import { useDispatch } from 'react-redux'
 import authService from '../appwrite/auth'
 import { useForm } from 'react-hook-form'
@@ -21,6 +23,7 @@ function Login() {
                 if(userData) dispatch(authLogin(userData));
                 navigate("/")
             }
+
         } catch (error) {
             return error;
         }
@@ -34,7 +37,7 @@ function Login() {
             <Logo width='100%'/>
         </span>
       </div>
-      <h2 className='texte-center text-2xl font-bold leading-tight'>Sigh in</h2>
+      <h2 className='text-center text-2xl font-bold leading-tight'>Sigh in</h2>
       <p className='mt-2 text-center text-base text-black-'>
         Don't have an account?
         <Link to="/signup" className='font-medium text-primary transition-all duration-200 hover:underline'>
