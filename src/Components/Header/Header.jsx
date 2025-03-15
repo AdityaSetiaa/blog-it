@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../index.js'
+import Logo from '../logo.jsx'
 import Logoutbtn from '../index.js'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -14,53 +14,66 @@ function Header() {
     {
       name: "Home",
       slug: "/",
-      active: true
+      active: true,
     },
     {
       name: "Login",
       slug: "/login",
-      active: !authStatus
-    },{
+      active: !authStatus,
+    },
+    {
       name: "Signup",
       slug: "/signup",
-      active: !authStatus
-    },{
+      active: !authStatus,
+    },
+    {
       name: "All post",
       slug: "/all-post",
-      active: authStatus
-    },{
+      active: authStatus,
+    },
+    {
       name: "Add post",
       slug: "/add-post",
-      active: authStatus
+      active: authStatus,
     },
-  ]
-  return (
-    <header className='py-3 shadow bg-grey-500'>
-          <Container>
-            <nav className='flex'>
-              <div className='mr-4'>
-                  <Link to='/'>
-                  <Logo/>
-                  </Link>
-              </div>
-              <ul className='flex ml-auto'>
-                {naItems.map((item)=>
-                item.active ? (
-                  <li key={item.name}>
-                    <button onClick={()=>navigate} className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100'>{item.name}</button>
-                  </li>
-                ) : null
-                )}
-                {authStatus && (
-                  <li>
-                    <Logoutbtn/>
-                  </li>
-                )}
-              </ul>
-            </nav>
-          </Container>
-    </header>
-  )
-}
+  ];
 
-export default Header
+  return (
+    <header className="py-3 shadow  bg-slate-900 shadow-sky-300 font-quicksand">
+      <Container>
+        <nav className="flex font-Quicksand">
+          <div className="mr-4">
+            <Link to="/">
+              <div className='flex flex-wrap gap-5'>
+              {/* <Logo width={100}/> */}
+              {/* <blogit className='text-5xl font-medium text-white font-Rowdies'> BlogIt</blogit> */}
+              </div>
+            </Link>
+          </div>
+          <ul className="flex ml-auto gap-4"> {/* Added gap-4 here */}
+            {naItems.map(
+              (item) =>
+                item.active && (
+                  <li key={item.name}>
+                    <button
+                      onClick={() => navigate(item.slug)}
+                      className="inline-block px-6 py-2 text-white duration-300 rounded hover:bg-slate-600 duration-500"
+                    >
+                      {item.name}
+                    </button>
+                  </li>
+                )
+            )}
+            {authStatus && (
+              <li>
+                <Logoutbtn />
+              </li>
+            )}
+          </ul>
+        </nav>
+      </Container>
+    </header>
+  );
+};
+
+export default Header;

@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+*{
+    font-family: "Quicksand";
+  }
+  
+Blogit{
+    font-family: lexed deca;
+}
+  span{
+    font-family: inherit;
+    font-weight: inherit;
+  }
