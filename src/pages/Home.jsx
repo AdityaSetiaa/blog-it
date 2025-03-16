@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import Postcard from '../Components/Postcard'
 import Container from '../Components/Container/Container'
 import appwriteService from '../appwrite/config'
+import { login } from '../Store/authSlice'
 
 export default function Home() {
     const [posts, setPosts] = useState([])
@@ -13,10 +14,10 @@ export default function Home() {
                 }
             })
         }, [])
-
+            
             if(posts.length === 0){
                 return(
-                    <div className='w-full mb-62  mt-64 py-8 text-center text-gray-500'>
+                    <div className='w-full mb-62 mt-62 py-8 text-center text-gray-500'>
                         <Container>
                             <div className='flex flex-wrap'>
                                 <div className='p-2 w-full'>

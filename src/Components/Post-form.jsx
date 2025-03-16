@@ -21,7 +21,7 @@ export default function PostForm({post}) {
     })
 
     const navigate = useNavigate()
-    const userData = useSelector(state => state.user.userData) 
+    const userData = useSelector(state => state.auth.userData) 
     
     const submit = async(data) => {
         if(post){
@@ -94,6 +94,7 @@ export default function PostForm({post}) {
             }}
         />
         <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
+
     </div>
     <div className="w-1/3 px-2">
         <Input
