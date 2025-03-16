@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 export default function PostForm({post}) {
-    const {register, handleSubmit, watch, setValue}= useForm({
+    const {register, handleSubmit, watch, setValue, control}= useForm({
         defaultValues: {
             title: post?.title || '' ,
             slug: post?.slug || '',
@@ -24,8 +24,9 @@ export default function PostForm({post}) {
     const userData = useSelector(state => state.auth.userData) 
     
     const submit = async(data) => {
+
         if(post){
-            data .image[0] ? appwriteService.uploadFile(data.image[0]) : null
+            data.image[0] ? appwriteService.uploadFile(data.image[0]) : null
 
             if(file){
                 appwriteService.deleteFile(post.featuredImage)
@@ -65,14 +66,14 @@ export default function PostForm({post}) {
 
     return "";
     },[])
-    React.useEffect(()=>{
+    useEffect(()=>{
         const subscription = watch((value, {name})=>{
             if(name === 'title'){
                 setValue('slug', slugTransform(value.title,{shouldValidate: true}))
             }
         })
         return () => {
-            subscription.unsubscribed()
+            subscription.unsubscribe();
         }
     },[watch, slugTransform, setValue])
   return (
@@ -93,7 +94,7 @@ export default function PostForm({post}) {
                 setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
             }}
         />
-        <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
+        <RTE label="Content :" name="content" control={control} defaultValue={"content"} />
 
     </div>
     <div className="w-1/3 px-2">
