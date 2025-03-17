@@ -46,7 +46,7 @@ function Signup() {
                 </h2>
               
                 {error && <p className="text-red-600">{error}</p>}
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit(create)}>
                     <div className="space-y-5">
                         <Input
                             label="Name: "
