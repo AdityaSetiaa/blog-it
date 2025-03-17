@@ -1,7 +1,7 @@
 import React from "react";
 import authService from "./appwrite/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "./store/authSlice";
+import { login } from "./store";
 import { Button, Input, Logo } from "./Components/index";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -47,7 +47,7 @@ function Signup() {
                     </Link>
                 </p>
                 {error && <p className="text-red-600">{error}</p>}
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit(create)}>
                     <div className="space-y-5">
                         <Input
                             label="name"

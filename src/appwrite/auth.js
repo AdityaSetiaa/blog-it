@@ -1,6 +1,4 @@
 import conf from '../conf/conf.js';
-console.log("All environment variables:", import.meta.env);  // ADD THIS LINE
-
 import { Client, Account, ID } from "appwrite";
 
 
@@ -11,8 +9,8 @@ export class AuthService {
 
     constructor() {
         this.client
-            .setEndpoint('https://cloud.appwrite.io/v1')
-            .setProject('67d61573002e7cb567c6');
+        .setEndpoint(conf.appwriteUrl)
+        .setProject(conf.appwriteProjectId);
         this.account = new Account(this.client);
             
     }
@@ -21,7 +19,6 @@ export class AuthService {
         try {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if (userAccount) {
-                // call another method
                 return this.login({email, password});
             } else {
                return  userAccount;

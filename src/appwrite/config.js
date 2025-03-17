@@ -88,7 +88,7 @@ export class Service{
     async uploadFile(file){
         try {
             return await this.bucket.createFile(
-                conf.apprwritebucketId,
+                import.meta.env.VITE_APPWRITE_BUCKET_ID,
                 ID.unique(),
                 file
             )
@@ -100,7 +100,7 @@ export class Service{
     async deleteFile(fileID){
     try {
         return await this.bucket.deleteFile(
-            conf.apprwritebucketId,
+            conf.appwritebucketId,
             fileID
         )
         return true

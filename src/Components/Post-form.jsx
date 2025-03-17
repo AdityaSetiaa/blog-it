@@ -82,26 +82,26 @@ export default function PostForm({post}) {
         <Input
             label="Title :"
             placeholder="Title"
-            className="mb-4"
+            className="mb-4 bg-white text-black rounded"
             {...register("title", { required: true })}
         />
         <Input
             label="Slug :"
             placeholder="Slug"
-            className="mb-4"
+            className="mb-4 bg-white text-black rounded"
             {...register("slug", { required: true })}
             onInput={(e) => {
                 setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
             }}
         />
-        <RTE label="Content :" name="content" control={control} defaultValue={"content"} />
+        <RTE label="" name="" control={control} defaultValue={""} />
 
     </div>
     <div className="w-1/3 px-2">
         <Input
-            label="Featured Image :"
+            label="" 
             type="file"
-            className="mb-4"
+            className="mb-4 bg-white text-black rounded"
             accept="image/png, image/jpg, image/jpeg, image/gif"
             {...register("image", { required: !post })}
         />
@@ -114,16 +114,18 @@ export default function PostForm({post}) {
                 />
             </div>
         )}
-        <Select
+        
+    </div>
+    
+    <Select
             options={["active", "inactive"]}
             label="Status"
-            className="mb-4"
+            className="mb-4 mt-6 max-w-[66%]" 
             {...register("status", { required: true })}
         />
-        <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
+        <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full  mt-6 max-w-[66%]">
             {post ? "Update" : "Submit"}
         </Button>
-    </div>
 </form>
 );
 }
